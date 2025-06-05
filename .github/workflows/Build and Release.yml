@@ -551,10 +551,10 @@ jobs:
       
     - name: Run Cyan
       run: |
-        Cyan -i "${{ env.spotifypath }}" -o "${{ env.componentspath }}/SpotC++.v${{ env.CHANGEVERSION }}_v${{ env.VANILLASPOTIFYVERSION }}.ipa" -v ${{ env.CHANGEVERSION }} -f "${{ env.sposifyfix }}" "${{ env.sposify }}" "${{ env.OSSEXT }}" "${{ env.orion }}" "${{ env.swiftprotobuf }}" "${{ env.eevee-arm }}" -u -w
-        echo "patchedspotify=${{ env.componentspath }}/SpotC++.v${{ env.CHANGEVERSION }}_v${{ env.VANILLASPOTIFYVERSION }}.ipa"
-        echo "patchedspotify=${{ env.componentspath }}/SpotC++.v${{ env.CHANGEVERSION }}_v${{ env.VANILLASPOTIFYVERSION }}.ipa" >> $GITHUB_ENV
-        echo "Patched Spotify .ipa Located: $patchedspotify"
+        Cyan -i "${{ env.spotifypath }}" -o "${{ env.componentspath }}/Fordys-SpotC++.v${{ env.CHANGEVERSION }}_v${{ env.VANILLASPOTIFYVERSION }}.ipa" -v ${{ env.CHANGEVERSION }} -f "${{ env.sposifyfix }}" "${{ env.sposify }}" "${{ env.OSSEXT }}" "${{ env.orion }}" "${{ env.swiftprotobuf }}" "${{ env.eevee-arm }}" -n "Spotify 🗿"-u -w
+        echo "patchedspotify=${{ env.componentspath }}/Fordys-SpotC++.v${{ env.CHANGEVERSION }}_v${{ env.VANILLASPOTIFYVERSION }}.ipa"
+        echo "patchedspotify=${{ env.componentspath }}/Fordys-SpotC++.v${{ env.CHANGEVERSION }}_v${{ env.VANILLASPOTIFYVERSION }}.ipa" >> $GITHUB_ENV
+        echo "Patched Spotify 🗿 .ipa Located: $patchedspotify"
 
     - name: Upload SpotifyPatched.ipa to VirusTotal
       if: ${{ env.VIRUSTOTALKEY }}
@@ -570,10 +570,10 @@ jobs:
 
     - name: Run Cyan AltStore
       run: |
-        Cyan -i "${{ env.spotifypath }}" -o "${{ env.componentspath }}/SpotC++.v${{ env.CHANGEVERSION }}_v${{ env.VANILLASPOTIFYVERSION }}_ALTSTORESOURCE_ONLY.ipa" -v ${{ env.CHANGEVERSION }} -b com.yodaluca23.SpotCPlusPlus -f "${{ env.sposifyfix }}" "${{ env.sposify }}" "${{ env.OSSEXT }}" "${{ env.orion }}" "${{ env.swiftprotobuf }}" "${{ env.eevee-arm }}" -u -w
-        echo "altpatchedspotify=${{ env.componentspath }}/SpotC++.v${{ env.CHANGEVERSION }}_v${{ env.VANILLASPOTIFYVERSION }}_ALTSTORESOURCE_ONLY.ipa"
-        echo "altpatchedspotify=${{ env.componentspath }}/SpotC++.v${{ env.CHANGEVERSION }}_v${{ env.VANILLASPOTIFYVERSION }}_ALTSTORESOURCE_ONLY.ipa" >> $GITHUB_ENV
-        echo "AltStore Patched Spotify .ipa Located: $altpatchedspotify"
+        Cyan -i "${{ env.spotifypath }}" -o "${{ env.componentspath }}/Fordys-SpotC++.v${{ env.CHANGEVERSION }}_v${{ env.VANILLASPOTIFYVERSION }}_ALTSTORESOURCE_ONLY.ipa" -v ${{ env.CHANGEVERSION }} -b de.heyfordy.SpotCPlusPlus -f "${{ env.sposifyfix }}" "${{ env.sposify }}" "${{ env.OSSEXT }}" "${{ env.orion }}" "${{ env.swiftprotobuf }}" "${{ env.eevee-arm }}" -u -w
+        echo "altpatchedspotify=${{ env.componentspath }}/Fordys-SpotC++.v${{ env.CHANGEVERSION }}_v${{ env.VANILLASPOTIFYVERSION }}_ALTSTORESOURCE_ONLY.ipa"
+        echo "altpatchedspotify=${{ env.componentspath }}/Fordys-SpotC++.v${{ env.CHANGEVERSION }}_v${{ env.VANILLASPOTIFYVERSION }}_ALTSTORESOURCE_ONLY.ipa" >> $GITHUB_ENV
+        echo "AltStore Patched Spotify 🗿 .ipa Located: $altpatchedspotify"
 
     - name: Upload AltSpotifyPatched.ipa to VirusTotal
       if: ${{ env.VIRUSTOTALKEY }}
@@ -763,7 +763,7 @@ jobs:
         else
           ALTSTORECHANGELOG="Updated Spotify to ${{ env.VANILLASPOTIFYVERSION }}."
         fi
-        ALTSTORECHANGELOG="${ALTSTORECHANGELOG}\n\n More Info:\n https://github.com/SpotCompiled/SpotC-Plus-Plus/releases/tag/v${{ env.CHANGEVERSION }}"
+        ALTSTORECHANGELOG="${ALTSTORECHANGELOG}\n\n More Info:\n https://github.com/elias1731/SpotC-Plus-Plus/releases/tag/v${{ env.CHANGEVERSION }}"
         echo "ALTSTORECHANGELOG=$ALTSTORECHANGELOG" >> $GITHUB_ENV
       
     - name: Update AltStore Repo.json
@@ -791,12 +791,12 @@ jobs:
            (.apps[] | select(.name == "SpotC++") | .appPermissions.privacy) = $PRIVKEYS |
            (.apps[] | select(.name == "SpotC++") | .appPermissions.entitlements) = $ENTITLEMENTS |
            (.apps[] | select(.name == "SpotC++") | .versionDescription) = $ALTSTORECHANGELOG |
-           (.apps[] | select(.name == "SpotC++") | .downloadURL) = "https://github.com/SpotCompiled/SpotC-Plus-Plus/releases/download/v\($CHANGEVERSION)/SpotC++.v\($CHANGEVERSION)_v\($VANILLASPOTIFYVERSION)_ALTSTORESOURCE_ONLY.ipa" |
+           (.apps[] | select(.name == "SpotC++") | .downloadURL) = "https://github.com/elias1731/SpotC-Plus-Plus/releases/download/v\($CHANGEVERSION)/Fordys-SpotC++.v\($CHANGEVERSION)_v\($VANILLASPOTIFYVERSION)_ALTSTORESOURCE_ONLY.ipa" |
            (.apps[] | select(.name == "SpotC++") | .versions) |= [{
               "version": $CHANGEVERSION,
               "date": $CURRENTDATE,
               "localizedDescription": $ALTSTORECHANGELOG,
-              "downloadURL": "https://github.com/SpotCompiled/SpotC-Plus-Plus/releases/download/v\($CHANGEVERSION)/SpotC++.v\($CHANGEVERSION)_v\($VANILLASPOTIFYVERSION)_ALTSTORESOURCE_ONLY.ipa",
+              "downloadURL": "https://github.com/elias1731/SpotC-Plus-Plus/releases/download/v\($CHANGEVERSION)/Fordys-SpotC++.v\($CHANGEVERSION)_v\($VANILLASPOTIFYVERSION)_ALTSTORESOURCE_ONLY.ipa",
               "size": ($SIZE | tonumber),
               "minOSVersion": "15.0"
            }] + . |
@@ -875,12 +875,12 @@ jobs:
            (.apps[] | select(.name == "SpotC++") | .size) = ($SIZE | tonumber) |
            (.apps[] | select(.name == "SpotC++") | .changelog) = $SCARLETCHANGELOG |
            (.apps[] | select(.name == "SpotC++") | .versionDescription) = $SCARLETCHANGELOG |
-           (.apps[] | select(.name == "SpotC++") | .downloadURL) = "https://github.com/SpotCompiled/SpotC-Plus-Plus/releases/download/v\($CHANGEVERSION)/SpotC++.v\($CHANGEVERSION)_v\($VANILLASPOTIFYVERSION).ipa" |
+           (.apps[] | select(.name == "SpotC++") | .downloadURL) = "https://github.com/elias1731/SpotC-Plus-Plus/releases/download/v\($CHANGEVERSION)/Fordys-SpotC++.v\($CHANGEVERSION)_v\($VANILLASPOTIFYVERSION).ipa" |
            (.apps[] | select(.name == "SpotC++") | .versions) |= [{
               "version": $CHANGEVERSION,
               "date": $CURRENTDATE,
               "localizedDescription": $SCARLETCHANGELOG,
-              "downloadURL": "https://github.com/SpotCompiled/SpotC-Plus-Plus/releases/download/v\($CHANGEVERSION)/SpotC++.v\($CHANGEVERSION)_v\($VANILLASPOTIFYVERSION).ipa",
+              "downloadURL": "https://github.com/elias1731/SpotC-Plus-Plus/releases/download/v\($CHANGEVERSION)/Fordys-SpotC++.v\($CHANGEVERSION)_v\($VANILLASPOTIFYVERSION).ipa",
               "size": ($SIZE | tonumber),
               "minOSVersion": "15.0"
            }] + . |
